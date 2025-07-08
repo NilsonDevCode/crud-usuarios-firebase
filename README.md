@@ -18,7 +18,7 @@ Este proyecto permite a los usuarios registrarse e iniciar sesión mediante un a
 
 1. Clona el repositorio:
 bash
-git clone https://github.com/tu_usuario/tu_repositorio.git  ejemplo...
+git clone https://github.com/NILSONCURSODAM/crud-usuarios-firebase.git
 
 2. Accede al directorio del proyecto:
 bash
