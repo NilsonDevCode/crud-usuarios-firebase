@@ -1,12 +1,63 @@
-# React + Vite
+# 🚀 Proyecto: CRUD de Usuarios con Firebase y React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto permite a los usuarios registrarse e iniciar sesión mediante un alias y contraseña, gestionar una lista de usuarios y asignarles profesiones personalizadas. Todo se realiza mediante una interfaz sencilla y moderna, con autenticación segura y control de acceso a los datos usando Firebase.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tecnologías usadas
 
-## Expanding the ESLint configuration
+- **React** (con Vite) – para construir la interfaz del usuario.
+- **Firebase Auth** – para registro e inicio de sesión con alias.
+- **Cloud Firestore** – como base de datos NoSQL en tiempo real.
+- **CSS** – para los estilos básicos (puede ampliarse con Tailwind o frameworks UI).
+- **Git** – para el control de versiones.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Cómo instalar y ejecutar el proyecto
+
+1. Clona el repositorio:
+bash
+git clone https://github.com/tu_usuario/tu_repositorio.git  ejemplo...
+
+2. Accede al directorio del proyecto:
+bash
+cd crud-usuarios
+
+3. Instala las dependencias:
+bash
+npm install
+
+4. Ejecuta el entorno de desarrollo:
+bash
+npm run dev
+
+✅ Funcionalidades principales
+🔐 Registro e inicio de sesión con alias único (sin necesidad de correo real).
+
+🔄 Verificación de alias duplicado antes de permitir el registro.
+
+💾 Sesión persistente con localStorage.
+
+👥 CRUD completo de usuarios (crear, leer, actualizar, eliminar).
+
+🧑‍💼 CRUD de profesiones dinámico, con vinculación a usuarios.
+
+🔍 Solo se muestran los datos propios de cada usuario (protección por uid).
+
+⚠️ Validaciones en formularios (campos obligatorios, alias únicos).
+
+🛡️ .gitignore configurado para proteger archivos sensibles como claves Firebase.
+
+🧠 💡 Ideal para...
+Practicar React con autenticación real.
+
+Aprender Firestore con estructuras relacionadas.
+
+Construir tu portafolio de desarrollador.
+
+Demostrar habilidades técnicas en entrevistas.
+
+
+
+
