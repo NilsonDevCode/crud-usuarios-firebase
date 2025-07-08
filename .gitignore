@@ -19,6 +19,10 @@ dist-ssr
 firebaseConfig.json
 .env
 
+# Firebase config para React
+src/firebaseConfig.js
+
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
