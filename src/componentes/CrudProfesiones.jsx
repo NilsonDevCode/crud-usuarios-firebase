@@ -1,62 +1,46 @@
-// componentes/CrudProfesiones.jsx
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   collection,
-  getDocs,
   addDoc,
   deleteDoc,
   updateDoc,
-  doc
+  doc,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
-const CrudProfesiones = () => {
-  const [profesiones, setProfesiones] = useState([]);
+const CrudProfesiones = ({ profesiones, setProfesiones, obtenerProfesiones }) => {
   const [nombre, setNombre] = useState("");
   const [editarId, setEditarId] = useState(null);
+  const uid = localStorage.getItem("uid");
 
-  useEffect(() => {
-    const obtenerProfesiones = async () => {
-      try {
-        const snapshot = await getDocs(collection(db, "profesiones"));
-        const lista = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setProfesiones(lista);
-      } catch (error) {
-        console.error("❌ Error al obtener profesiones:", error);
-      }
-    };
+  const crearProfesion = async () => {
+    try {
+      await addDoc(collection(db, "profesiones"), { nombre, uid });
+      await obtenerProfesiones(); // 🔄 Recarga la lista automáticamente
+      alert("✅ Profesión creada");
+    } catch (error) {
+      console.error("❌ Error al crear profesión:", error);
+    }
+  };
 
-    obtenerProfesiones();
-  }, []);
+  const actualizarProfesion = async () => {
+    try {
+      await updateDoc(doc(db, "profesiones", editarId), { nombre });
+      await obtenerProfesiones(); // 🔄 Refresca la lista
+      alert("✅ Profesión actualizada");
+    } catch (error) {
+      console.error("❌ Error al actualizar:", error);
+    }
+  };
 
   const manejarGuardar = async () => {
     if (!nombre.trim()) {
       alert("⚠️ El nombre es obligatorio");
       return;
     }
-
-    try {
-      if (editarId) {
-        await updateDoc(doc(db, "profesiones", editarId), { nombre });
-        setProfesiones(profesiones.map(p => 
-          p.id === editarId ? { id: editarId, nombre } : p
-        ));
-        alert("✅ Profesión actualizada");
-      } else {
-        const docRef = await addDoc(collection(db, "profesiones"), { nombre });
-        // 🔥 Añadimos la nueva profesión directamente al estado
-        setProfesiones([...profesiones, { id: docRef.id, nombre }]);
-        alert("✅ Profesión creada");
-      }
-
-      setNombre("");
-      setEditarId(null);
-    } catch (error) {
-      console.error("❌ Error al guardar:", error);
-    }
+    editarId ? await actualizarProfesion() : await crearProfesion();
+    setNombre("");
+    setEditarId(null);
   };
 
   const manejarEditar = (profesion) => {
@@ -67,7 +51,7 @@ const CrudProfesiones = () => {
   const manejarEliminar = async (id) => {
     try {
       await deleteDoc(doc(db, "profesiones", id));
-      setProfesiones(profesiones.filter(p => p.id !== id));
+      await obtenerProfesiones(); // 🔄 Refresca tras eliminar
       alert("✅ Profesión eliminada");
     } catch (error) {
       console.error("❌ Error al eliminar:", error);
@@ -88,17 +72,23 @@ const CrudProfesiones = () => {
       </button>
 
       <ul>
-        {profesiones.map(profesion => (
-          <li key={profesion.id}>
-            {profesion.nombre}
-            <button onClick={() => manejarEditar(profesion)}>✏️</button>
-            <button onClick={() => manejarEliminar(profesion.id)}>🗑️</button>
-          </li>
-        ))}
+        {Array.isArray(profesiones) && profesiones.length > 0 ? (
+          profesiones.map((profesion) => (
+            <li key={profesion.id}>
+              {profesion.nombre}
+              <button onClick={() => manejarEditar(profesion)}>✏️</button>
+              <button onClick={() => manejarEliminar(profesion.id)}>🗑️</button>
+            </li>
+          ))
+        ) : (
+          <li>No hay profesiones registradas</li>
+        )}
       </ul>
     </div>
   );
 };
 
 export default CrudProfesiones;
+
+
 

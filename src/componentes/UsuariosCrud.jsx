@@ -1,7 +1,7 @@
-// componentes/UsuariosCrud.jsx
 import { useState, useEffect } from "react";
 import FormularioUsuario from "./FormularioUsuario";
 import ListaUsuarios from "./ListaUsuarios";
+import CrudProfesiones from "./CrudProfesiones";
 import { db } from "../firebaseConfig";
 import {
   collection,
@@ -17,25 +17,41 @@ import {
 const UsuariosCrud = () => {
   const uidLogueado = localStorage.getItem("uid");
   const [usuarios, setUsuarios] = useState([]);
+  const [profesiones, setProfesiones] = useState([]);
   const [datosUsuario, setDatosUsuario] = useState({ id: "", nombre: "", profesion_id: "" });
   const [editarInformacion, setEditarInformacion] = useState(false);
 
-  useEffect(() => {
-    const obtenerUsuarios = async () => {
-      try {
-        const q = query(collection(db, "usuarios"), where("uid", "==", uidLogueado));
-        const snapshot = await getDocs(q);
-        const lista = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setUsuarios(lista);
-      } catch (error) {
-        console.error("❌ Error al obtener usuarios:", error);
-      }
-    };
+  const obtenerUsuarios = async () => {
+    try {
+      const q = query(collection(db, "usuarios"), where("uid", "==", uidLogueado));
+      const snapshot = await getDocs(q);
+      const lista = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setUsuarios(lista);
+    } catch (error) {
+      console.error("❌ Error al obtener usuarios:", error);
+    }
+  };
 
+  const obtenerProfesiones = async () => {
+    try {
+      const q = query(collection(db, "profesiones"), where("uid", "==", uidLogueado));
+      const snapshot = await getDocs(q);
+      const lista = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setProfesiones(lista);
+    } catch (error) {
+      console.error("❌ Error al obtener profesiones:", error);
+    }
+  };
+
+  useEffect(() => {
     obtenerUsuarios();
+    obtenerProfesiones();
   }, [uidLogueado]);
 
   const manejarCambio = (e) => {
@@ -55,7 +71,7 @@ const UsuariosCrud = () => {
 
     const nuevoUsuario = {
       nombre: datosUsuario.nombre,
-      profesion_id: datosUsuario.profesion_id, // ✅ sin parseInt
+      profesion_id: datosUsuario.profesion_id,
       uid: uidLogueado
     };
 
@@ -74,7 +90,7 @@ const UsuariosCrud = () => {
 
     const usuarioActualizado = {
       nombre: datosUsuario.nombre,
-      profesion_id: datosUsuario.profesion_id, // ✅ sin parseInt
+      profesion_id: datosUsuario.profesion_id,
       uid: uidLogueado
     };
 
@@ -119,6 +135,7 @@ const UsuariosCrud = () => {
         crearUsuario={crearUsuario}
         actualizarUsuario={actualizarUsuario}
         cancelarEdicion={resetFormulario}
+        profesiones={profesiones}
       />
 
       <ListaUsuarios
@@ -126,8 +143,16 @@ const UsuariosCrud = () => {
         iniciarEdicion={iniciarEdicion}
         eliminarUsuario={eliminarUsuario}
       />
+
+      <hr />
+      <CrudProfesiones
+        profesiones={profesiones}
+        setProfesiones={setProfesiones}
+        obtenerProfesiones={obtenerProfesiones}
+      />
     </div>
   );
 };
 
 export default UsuariosCrud;
+
