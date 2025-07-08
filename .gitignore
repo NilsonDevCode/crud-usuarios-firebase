@@ -16,7 +16,7 @@ dist-ssr
 *.local
 
 # Firebase config / claves privadas
-firebaseConfig.json
+#firebaseConfig.json
 .env
 
 # Firebase config para React
