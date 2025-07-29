@@ -96,9 +96,11 @@ npm run dev
 ## 👨‍💻 Autor
 
 **Nilson Ochoa Martínez**  
-📧 nilson-ochoamartinez@hotmail.com  
+Desarrollador Web & Móvil Junior  
 📍 Alicante, España  
-🎓 Desarrollador Web & Móvil Junior
+💼 [LinkedIn](https://www.linkedin.com/in/nilsonochoa-dev/)  
+📧 nilson-ochoamartinez@hotmail.com  
+📱 +34 618 766 660
 
 ---
 
