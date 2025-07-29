@@ -34,19 +34,17 @@
 
 ## 📂 Estructura del proyecto
 
+```
 src/
 ├── componentes/
-│ ├── FormularioUsuario.jsx
-│ ├── ListaUsuarios.jsx
-│ ├── CrudProfesiones.jsx
-│ └── UsuariosCrud.jsx
+│   ├── FormularioUsuario.jsx
+│   ├── ListaUsuarios.jsx
+│   ├── CrudProfesiones.jsx
+│   └── UsuariosCrud.jsx
 ├── firebaseConfig.js
 ├── App.jsx
 └── main.jsx
-
-yaml
-Copiar
-Editar
+```
 
 ---
 
@@ -61,37 +59,58 @@ VITE_FIREBASE_PROJECT_ID=TU_PROJECT_ID
 VITE_FIREBASE_STORAGE_BUCKET=TU_BUCKET
 VITE_FIREBASE_MESSAGING_SENDER_ID=TU_SENDER_ID
 VITE_FIREBASE_APP_ID=TU_APP_ID
-🛠️ Instalación local
-bash
-Copiar
-Editar
+```
+
+---
+
+## 🛠️ Instalación local
+
+```bash
 git clone https://github.com/NILSONCURSODAM/crud-usuarios-firebase.git
 cd crud-usuarios-firebase
 npm install
 npm run dev
-🌍 Demo en producción
-📲 Puedes acceder desde cualquier dispositivo:
+```
+
+---
+
+## 🌍 Demo en producción
 
 🔗 https://crud-usuarios-firebase-xg75.vercel.app/
 
-🧪 Imágenes del proyecto
-🔐 Pantalla de Login
+---
 
-🧾 Pantalla de Registro
+## 🧪 Imágenes del proyecto
 
-🧑‍💻 Interfaz del CRUD
+### 🔐 Pantalla de Login
+![Login](./login_sesion.png)
 
-👨‍💻 Autor
-Nilson Ochoa Martínez
-📧 nilson-ochoamartinez@hotmail.com
-📍 Alicante, España
+### 🧾 Pantalla de Registro
+![Registro](./registro_sesion.png)
+
+### 🧑‍💻 Interfaz del CRUD
+![CRUD](./crud_usuarios.png)
+
+---
+
+## 👨‍💻 Autor
+
+**Nilson Ochoa Martínez**  
+📧 nilson-ochoamartinez@hotmail.com  
+📍 Alicante, España  
 🎓 Desarrollador Web & Móvil Junior
 
-🧠 Descripción general
+---
+
+## 🧠 Descripción general
+
 Aplicación web completa con autenticación y CRUD en tiempo real, desarrollada con React + Vite, Firebase (Auth + Firestore) y desplegada en Vercel. Cada usuario puede gestionar su información y profesiones de forma segura mediante su UID.
 
-🧾 Repositorio público
-📁 GitHub: https://github.com/NILSONCURSODAM/crud-usuarios-firebase
-🌐 Demo: https://crud-usuarios-firebase-xg75.vercel.app
+---
+
+## 📁 Repositorio público
+
+- GitHub: [https://github.com/NILSONCURSODAM/crud-usuarios-firebase](https://github.com/NILSONCURSODAM/crud-usuarios-firebase)
+- Demo: [https://crud-usuarios-firebase-xg75.vercel.app](https://crud-usuarios-firebase-xg75.vercel.app)
 
 
