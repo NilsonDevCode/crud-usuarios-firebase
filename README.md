@@ -83,13 +83,13 @@ npm run dev
 ## 🧪 Imágenes del proyecto
 
 ### 🔐 Pantalla de Login
-![Login](./login_sesion.png)
+![Login](./Login.png)
 
 ### 🧾 Pantalla de Registro
-![Registro](./registro_sesion.png)
+![Registro](./Registro.png)
 
 ### 🧑‍💻 Interfaz del CRUD
-![CRUD](./crud_usuarios.png)
+![CRUD](./Crud.png)
 
 ---
 
