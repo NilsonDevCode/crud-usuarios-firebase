@@ -112,7 +112,7 @@ Aplicación web completa con autenticación y CRUD en tiempo real, desarrollada 
 
 ## 📁 Repositorio público
 
-- GitHub: [https://github.com/NILSONCURSODAM/crud-usuarios-firebase](https://github.com/NILSONCURSODAM/crud-usuarios-firebase)
+- GitHub: [https://github.com/NILSONCURSODAM/crud-usuarios-firebase](https://github.com/NilsonDevCode/crud-usuarios-firebase)
 - Demo: [https://crud-usuarios-firebase-xg75.vercel.app](https://crud-usuarios-firebase-xg75.vercel.app)
 
 
